@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IndiaBiz Directory</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#0f172a;
+color:#fff;
+line-height:1.6;
+}
+
+header{
+background:#020617;
+padding:20px;
+position:sticky;
+top:0;
+z-index:100;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:1100px;
+margin:auto;
+}
+
+nav h1{
+color:#38bdf8;
+}
+
+nav a{
+color:#fff;
+text-decoration:none;
+margin-left:20px;
+}
+
+.hero{
+text-align:center;
+padding:80px 20px;
+background:linear-gradient(135deg,#020617,#1e293b);
+}
+
+.hero h2{
+font-size:40px;
+margin-bottom:20px;
+}
+
+.search-bar{
+margin-top:20px;
+}
+
+.search-bar input{
+padding:12px;
+width:250px;
+border:none;
+border-radius:6px;
+}
+
+.search-bar button{
+padding:12px 18px;
+border:none;
+background:#38bdf8;
+color:#000;
+border-radius:6px;
+cursor:pointer;
+}
+
+.section{
+max-width:1100px;
+margin:auto;
+padding:60px 20px;
+}
+
+.categories{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:20px;
+}
+
+.cat{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+text-align:center;
+cursor:pointer;
+transition:.3s;
+}
+
+.cat:hover{
+transform:translateY(-5px);
+background:#334155;
+}
+
+.city-filter{
+margin-bottom:30px;
+text-align:center;
+}
+
+.city-filter button{
+margin:5px;
+padding:10px 15px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+background:#38bdf8;
+color:#000;
+}
+
+.business-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+transition:.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.card h3{
+margin-bottom:10px;
+color:#38bdf8;
+}
+
+.card p{
+font-size:14px;
+margin:5px 0;
+}
+
+.btn{
+display:inline-block;
+margin-top:10px;
+padding:8px 12px;
+background:#22c55e;
+color:#fff;
+text-decoration:none;
+border-radius:5px;
+font-size:14px;
+}
+
+.contact{
+text-align:center;
+}
+
+footer{
+background:#020617;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+
+@media(max-width:600px){
+.hero h2{
+font-size:28px;
+}
+.search-bar input{
+width:180px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<h1>IndiaBiz</h1>
+<div>
+<a href="#">Home</a>
+<a href="#categories">Categories</a>
+<a href="#businesses">Businesses</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+</header>
+
+<section class="hero">
+<h2>Find Trusted Businesses Across India</h2>
+<p>Search salons, gyms, cafes, doctors and more.</p>
+
+<div class="search-bar">
+<input type="text" id="searchInput" placeholder="Search business or city">
+<button onclick="searchBusiness()">Search</button>
+</div>
+</section>
+
+<section class="section" id="categories">
+<h2>Categories</h2>
+<br>
+
+<div class="categories">
+
+<div class="cat">Salon</div>
+<div class="cat">Gym</div>
+<div class="cat">Restaurant</div>
+<div class="cat">Doctor</div>
+<div class="cat">Coaching</div>
+<div class="cat">Electronics</div>
+
+</div>
+</section>
+
+<section class="section" id="businesses">
+
+<h2>Featured Businesses</h2>
+<br>
+
+<div class="city-filter">
+<button onclick="filterCity('All')">All</button>
+<button onclick="filterCity('Aligarh')">Aligarh</button>
+<button onclick="filterCity('Delhi')">Delhi</button>
+<button onclick="filterCity('Mumbai')">Mumbai</button>
+<button onclick="filterCity('Bangalore')">Bangalore</button>
+</div>
+
+<div class="business-grid" id="businessGrid">
+
+<div class="card" data-city="Aligarh">
+<h3>The Hair Club</h3>
+<p>Category: Salon</p>
+<p>City: Aligarh</p>
+<p>Phone: +91 9876543210</p>
+<a class="btn" href="https://maps.google.com" target="_blank">Map</a>
+<a class="btn" href="https://wa.me/919876543210" target="_blank">WhatsApp</a>
+</div>
+
+<div class="card" data-city="Delhi">
+<h3>FitZone Gym</h3>
+<p>Category: Gym</p>
+<p>City: Delhi</p>
+<p>Phone: +91 9871112233</p>
+<a class="btn" href="https://maps.google.com" target="_blank">Map</a>
+<a class="btn" href="https://wa.me/919871112233" target="_blank">WhatsApp</a>
+</div>
+
+<div class="card" data-city="Mumbai">
+<h3>Cafe Brew</h3>
+<p>Category: Restaurant</p>
+<p>City: Mumbai</p>
+<p>Phone: +91 9811112233</p>
+<a class="btn" href="https://maps.google.com" target="_blank">Map</a>
+<a class="btn" href="https://wa.me/919811112233" target="_blank">WhatsApp</a>
+</div>
+
+<div class="card" data-city="Bangalore">
+<h3>City Care Clinic</h3>
+<p>Category: Doctor</p>
+<p>City: Bangalore</p>
+<p>Phone: +91 9822223344</p>
+<a class="btn" href="https://maps.google.com" target="_blank">Map</a>
+<a class="btn" href="https://wa.me/919822223344" target="_blank">WhatsApp</a>
+</div>
+
+</div>
+</section>
+
+<section class="section contact" id="contact">
+<h2>Contact Us</h2>
+<br>
+<p>Email: support@indiabiz.com</p>
+<p>Phone: +91 9000000000</p>
+</section>
+
+<footer>
+<p>© 2026 IndiaBiz Directory | Discover Local Businesses Across India</p>
+</footer>
+
+<script>
+
+function filterCity(city){
+
+let cards=document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+
+if(city==="All" || card.dataset.city===city){
+card.style.display="block";
+}else{
+card.style.display="none";
+}
+
+});
+
+}
+
+function searchBusiness(){
+
+let input=document.getElementById("searchInput").value.toLowerCase();
+let cards=document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+
+let text=card.innerText.toLowerCase();
+
+if(text.includes(input)){
+card.style.display="block";
+}else{
+card.style.display="none";
+}
+
+});
+
+}
+
+</script>
+
+</body>
+  </html>
